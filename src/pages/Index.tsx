@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -16,13 +15,15 @@ import {
   TrendingUp,
   FileText,
   User,
-  Settings
+  Settings,
+  MessageCircle
 } from "lucide-react";
 import JobQueue from "@/components/JobQueue";
 import AIContentGenerator from "@/components/AIContentGenerator";
 import ReviewInterface from "@/components/ReviewInterface";
 import ApplicationTracker from "@/components/ApplicationTracker";
 import ProfileSettings from "@/components/ProfileSettings";
+import WhatsAppBot from "@/components/WhatsAppBot";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -58,10 +59,14 @@ const Index = () => {
         </header>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-6 bg-white/50 backdrop-blur-sm">
+          <TabsList className="grid w-full grid-cols-7 bg-white/50 backdrop-blur-sm">
             <TabsTrigger value="dashboard" className="flex items-center gap-2">
               <TrendingUp className="w-4 h-4" />
               Dashboard
+            </TabsTrigger>
+            <TabsTrigger value="whatsapp" className="flex items-center gap-2">
+              <MessageCircle className="w-4 h-4" />
+              WhatsApp Bot
             </TabsTrigger>
             <TabsTrigger value="jobs" className="flex items-center gap-2">
               <Briefcase className="w-4 h-4" />
@@ -189,6 +194,10 @@ const Index = () => {
                 </div>
               </CardContent>
             </Card>
+          </TabsContent>
+
+          <TabsContent value="whatsapp">
+            <WhatsAppBot />
           </TabsContent>
 
           <TabsContent value="jobs">
